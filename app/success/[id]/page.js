@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const Success = ({ params }) => {
     const [ticket, setTicket] = useState({})
     useEffect(() => {
-        axios.get(`https://funworld-backend-delta.vercel.app/api/soldtickets?id=${params.id}`).then((res) => {
+        axios.get(`http://localhost:8000/api/soldtickets?id=${params.id}`).then((res) => {
             setTicket(res.data.message);
             // console.log(res.data.message);
             window.localStorage.setItem('cart', JSON.stringify([]))

@@ -17,7 +17,7 @@ const Admin = () => {
             const token1 = JSON.parse(token)
             let { email, password } = jwt.decode(token1)
             if (email && password) {
-                axios.post("https://funworld-backend-delta.vercel.app/api/auth/admin", {
+                axios.post("http://localhost:8000/api/auth/admin", {
                     email: email,
                     password: password
                 }).then(res => {
@@ -35,7 +35,7 @@ const Admin = () => {
             if (isAdminLoggedIn) {
               let token = window.localStorage.getItem('funworldLogin')
                 try {
-                    const res = await axios.get("https://funworld-backend-delta.vercel.app/api/soldtickets",{headers:{token:token}});
+                    const res = await axios.get("http://localhost:8000/api/soldtickets",{headers:{token:token}});
                     // console.log(res.data);
                     // setSoldTicketsArray(res.data);
                     let arr = res.data.sort((a, b) => b.tickets[0].visitDate.localeCompare(a.tickets[0].visitDate));
@@ -72,7 +72,7 @@ const Admin = () => {
         if(!ask)return
         try{
             let token = window.localStorage.getItem('funworldLogin')
-            const res = await axios.delete(`https://funworld-backend-delta.vercel.app/api/soldtickets?id=${id}`,{headers:{token:token}})
+            const res = await axios.delete(`http://localhost:8000/api/soldtickets?id=${id}`,{headers:{token:token}})
             console.log(res)
             let tempArray = [...soldTicketsArray]
             tempArray.splice(index,1)
@@ -91,7 +91,7 @@ const Admin = () => {
     const verifyCredentials = async (email, password) => {
         
         try {
-            const res = await axios.post("https://funworld-backend-delta.vercel.app/api/auth/admin", {
+            const res = await axios.post("http://localhost:8000/api/auth/admin", {
                 email: email,
                 password: password
             });
@@ -124,7 +124,7 @@ const Admin = () => {
 
         try {
           let token = window.localStorage.getItem('funworldLogin')
-            const res = await axios.put(`https://funworld-backend-delta.vercel.app/api/soldtickets?id=${soldTicketId}`, { tickets: updatedSoldTicketsArray[index].tickets },{headers:{token:token}});
+            const res = await axios.put(`http://localhost:8000/api/soldtickets?id=${soldTicketId}`, { tickets: updatedSoldTicketsArray[index].tickets },{headers:{token:token}});
 
       // Assuming the API call was successful, update the state with the updated array
       setSoldTicketsArray(updatedSoldTicketsArray);

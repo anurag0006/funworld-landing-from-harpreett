@@ -153,7 +153,7 @@ const TicketsPage = () => {
 
     // setPage(3);
     try {
-      const res = await axios.post("https://funworld-backend-delta.vercel.app/api/soldtickets", {
+      const res = await axios.post("http://localhost:8000/api/soldtickets", {
         userDetails: bookingDetails, bookingInfo: info
       })
 
@@ -178,7 +178,7 @@ const TicketsPage = () => {
       // console.log(checkoutPrice);
 
       const res = await axios.post(
-        "https://funworld-backend-delta.vercel.app/api/razorpay/create-order",
+        "http://localhost:8000/api/razorpay/create-order",
         {
           amount: Number(checkoutPriceAfterDiscount * 100),
           name: info.name ? info.name : "",
@@ -192,14 +192,14 @@ const TicketsPage = () => {
       const order = res.data.order;
 
       var options = {
-        key: "rzp_live_I288ODVatA9yrx", // Enter the Key ID generated from the Dashboard
+        key: "rzp_test_jXxR67FCNWfnVg", // Enter the Key ID generated from the Dashboard
         amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         currency: "INR",
         name: "Funworld Bangalore", //your business name
         description: "Book Tickets",
         image: "https://example.com/your_logo",
         order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        callback_url: `https://funworld-backend-delta.vercel.app/api/razorpay/paymentverification?id=${ticketId}&price=${checkoutPriceAfterDiscount}&discount=${discountPrice}&coupon_code=${coupon}`,
+        callback_url: `http://localhost:8000/api/razorpay/paymentverification?id=${ticketId}&price=${checkoutPriceAfterDiscount}&discount=${discountPrice}&coupon_code=${coupon}`,
         prefill: {
           //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
           name: info.name, //your customer's name
@@ -270,7 +270,7 @@ const TicketsPage = () => {
     ) {
       try {
         const res = await axios.post(
-          "https://funworld-backend-delta.vercel.app/api/coupon/verifycouponcode",
+          "http://localhost:8000/api/coupon/verifycouponcode",
           {
             couponCode: code, // Fix the variable name here from coupon to code
           }

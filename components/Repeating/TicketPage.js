@@ -19,7 +19,7 @@ const TicketPage = ({id, child, adult, senior, name, date, number, email, price,
       pdf.addImage(imgData, 'PNG', 0, 10, imgWidth * ratio, imgHeight * ratio);
       var base64 = canvas.toDataURL('image/jpeg', 0.01)
       console.log(base64)
-      emailjs.send("service_giwq3bu","template_zswzw7d",{
+      emailjs.send("service_giwq3bu","template_o83jobh",{
         name: name,
         date: date,
         email: email,

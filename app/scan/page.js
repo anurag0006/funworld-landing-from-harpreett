@@ -16,7 +16,7 @@ const Scan = () => {
             const token1 = JSON.parse(token)
             let { email, password } = jwt.decode(token1)
             if (email && password) {
-                axios.post("https://funworld-backend-delta.vercel.app/api/auth/admin", {
+                axios.post("http://localhost:8000/api/auth/admin", {
                     email: email,
                     password: password
                 }).then(res => {
@@ -39,7 +39,7 @@ const Scan = () => {
 
     const verifyCredentials = async (email, password) => {
         try {
-            const res = await axios.post("https://funworld-backend-delta.vercel.app/api/auth/admin", {
+            const res = await axios.post("http://localhost:8000/api/auth/admin", {
                 email: email,
                 password: password
             });
@@ -65,7 +65,7 @@ const Scan = () => {
             let qrcode = result?.text
             let soldTicketId = qrcode.split(' ')[0]
             let ticketId = qrcode.split(' ')[1]
-            let res = await axios.get(`https://funworld-backend-delta.vercel.app/api/soldtickets?id=${soldTicketId}`)
+            let res = await axios.get(`http://localhost:8000/api/soldtickets?id=${soldTicketId}`)
 
             if (!(res.data.status)) {
                 alert("No such Ticket")
@@ -82,7 +82,7 @@ const Scan = () => {
                     let check = confirm(`Child: ${tickets[i].child} Adult: ${tickets[i].adult} Senior: ${tickets[i].senior}`);
                     if (check) {
                         tickets[i].checkedIn = true
-                        res = await axios.put(`https://funworld-backend-delta.vercel.app/api/soldtickets?id=${soldTicketId}`, { tickets: tickets });
+                        res = await axios.put(`http://localhost:8000/api/soldtickets?id=${soldTicketId}`, { tickets: tickets });
                     }
                     return
                 }
