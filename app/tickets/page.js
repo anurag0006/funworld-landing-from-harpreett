@@ -118,13 +118,12 @@ const TicketsPage = () => {
 
     // setPage(3);
     try {
-      const res = await axios.post(
-        "https://funworld-backend.vercel.app/api/soldtickets",
-        {
-          userDetails: bookingDetails,
-          bookingInfo: info,
-        }
-      );
+      // console.log("Heello");
+
+      const res = await axios.post("http://localhost:8000/api/soldtickets", {
+        userDetails: bookingDetails,
+        bookingInfo: info,
+      });
 
       // console.log(res.data.status);
       if (res.data.status) {
@@ -147,7 +146,7 @@ const TicketsPage = () => {
       // console.log(checkoutPrice);
 
       const res = await axios.post(
-        "https://funworld-backend.vercel.app/api/razorpay/create-order",
+        "http://localhost:8000/api/razorpay/create-order",
         {
           amount: Number(checkoutPriceAfterDiscount * 100),
           name: info.name ? info.name : "",
@@ -169,16 +168,21 @@ const TicketsPage = () => {
         description: "Book Tickets",
         image: "https://example.com/your_logo",
         order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        callback_url: `https://funworld-backend.vercel.app/api/razorpay/paymentverification?id=${ticketId}&price=${checkoutPriceAfterDiscount}&discount=${discountPrice}&coupon_code=${coupon}`,
+        callback_url: `http://localhost:8000/api/razorpay/paymentverification?id=${ticketId}&price=${checkoutPriceAfterDiscount}&discount=${discountPrice}&coupon_code=${coupon}`,
         prefill: {
           //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
           name: info.name, //your customer's name
-          //   "email": user.email,
-          //   "contact": billingDetails.mobile  //Provide the customer's phone number for better conversion rates
+          // email: user.email,
+          // contact: billingDetails.mobile,
+          //Provide the customer's phone number for better conversion rates
         },
         notes: {
           info: JSON.stringify(info), // Convert the object to a JSON string
           bookingDetails: JSON.stringify(bookingDetails),
+          id: ticketId,
+          price: checkoutPriceAfterDiscount,
+          discount: discountPrice,
+          coupon_code: coupon
         },
         theme: {
           color: "#3399cc",
@@ -240,7 +244,7 @@ const TicketsPage = () => {
     ) {
       try {
         const res = await axios.post(
-          "https://funworld-backend.vercel.app/api/coupon/verifycouponcode",
+          "http://localhost:8000/api/coupon/verifycouponcode",
           {
             couponCode: code, // Fix the variable name here from coupon to code
           }
@@ -1117,10 +1121,10 @@ const TicketsPage = () => {
                 alt="abc"
               />
             </span>
-            <p>
+            {/* <p>
               STUDENT Discount if used, Must Carry a Valid Student ID Card for
               verification. Valid only for School & College Students.
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
