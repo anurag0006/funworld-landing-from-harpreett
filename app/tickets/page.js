@@ -119,7 +119,7 @@ const TicketsPage = () => {
     // setPage(3);
     try {
       const res = await axios.post(
-        "https://free.funworldbackend.tech/api/soldtickets",
+        "https://funworld-backend.vercel.app/api/soldtickets",
         {
           userDetails: bookingDetails,
           bookingInfo: info,
@@ -147,7 +147,7 @@ const TicketsPage = () => {
       // console.log(checkoutPrice);
 
       const res = await axios.post(
-        "https://free.funworldbackend.tech/api/razorpay/create-order",
+        "https://funworld-backend.vercel.app/api/razorpay/create-order",
         {
           amount: Number(checkoutPriceAfterDiscount * 100),
           name: info.name ? info.name : "",
@@ -169,7 +169,7 @@ const TicketsPage = () => {
         description: "Book Tickets",
         image: "https://example.com/your_logo",
         order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        callback_url: `https://free.funworldbackend.tech/api/razorpay/paymentverification?id=${ticketId}&price=${checkoutPriceAfterDiscount}&discount=${discountPrice}&coupon_code=${coupon}`,
+        callback_url: `https://funworld-backend.vercel.app/api/razorpay/paymentverification?id=${ticketId}&price=${checkoutPriceAfterDiscount}&discount=${discountPrice}&coupon_code=${coupon}`,
         prefill: {
           //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
           name: info.name, //your customer's name
@@ -240,7 +240,7 @@ const TicketsPage = () => {
     ) {
       try {
         const res = await axios.post(
-          "https://free.funworldbackend.tech/api/coupon/verifycouponcode",
+          "https://funworld-backend.vercel.app/api/coupon/verifycouponcode",
           {
             couponCode: code, // Fix the variable name here from coupon to code
           }

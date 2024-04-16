@@ -14,13 +14,10 @@ const Admin = () => {
       let { email, password } = jwt.decode(token1);
       if (email && password) {
         axios
-          .post(
-            "https://free.funworldbackend.tech/api/auth/admin",
-            {
-              email: email,
-              password: password,
-            }
-          )
+          .post("https://funworld-backend.vercel.app/api/auth/admin", {
+            email: email,
+            password: password,
+          })
           .then((res) => {
             if (res.data.admin) {
               setIsAdminLoggedIn(true);
@@ -46,7 +43,7 @@ const Admin = () => {
   const verifyCredentials = async (email, password) => {
     try {
       const res = await axios.post(
-        "https://free.funworldbackend.tech/api/auth/admin",
+        "https://funworld-backend.vercel.app/api/auth/admin",
         {
           email: email,
           password: password,
@@ -66,16 +63,16 @@ const Admin = () => {
   const handleAddHoliday = async (e) => {
     e.preventDefault();
     if (!isAdminLoggedIn) return;
-    let token = window.localStorage.getItem('funworldLogin')
+    let token = window.localStorage.getItem("funworldLogin");
     const res = await axios.post(
-      "https://free.funworldbackend.tech/api/holidays",
+      "https://funworld-backend.vercel.app/api/holidays",
       {
         holiday: holiday,
       },
       {
         headers: {
-          token: token
-        }
+          token: token,
+        },
       }
     );
     const sortedHolidays = res.data.message.sort((a, b) => {
@@ -89,27 +86,27 @@ const Admin = () => {
 
   useEffect(() => {
     // const fetchQueries = async () => {
-      if (!isAdminLoggedIn) return;
-      let token = window.localStorage.getItem('funworldLogin')
-      axios.get(
-        "https://free.funworldbackend.tech/api/query/").then((res)=>{
-        const revArray = res.data.message.slice().reverse();
-        setSubmissions(revArray);
-      });
+    if (!isAdminLoggedIn) return;
+    let token = window.localStorage.getItem("funworldLogin");
+    axios.get("https://funworld-backend.vercel.app/api/query/").then((res) => {
+      const revArray = res.data.message.slice().reverse();
+      setSubmissions(revArray);
+    });
     // };
 
     // const fetchHolidays = async () => {
-      // if (!isAdminLoggedIn) return;
-      // let token = window.localStorage.getItem('funworldLogin')
-      axios.get(
-        "https://free.funworldbackend.tech/api/holidays/").then((res)=>{
+    // if (!isAdminLoggedIn) return;
+    // let token = window.localStorage.getItem('funworldLogin')
+    axios
+      .get("https://funworld-backend.vercel.app/api/holidays/")
+      .then((res) => {
         const sortedHolidays = res.data.message.sort((a, b) => {
           // Assuming holidayDate is in the format that allows direct string comparison
           return a.holidayDate.localeCompare(b.holidayDate);
         });
         setAllHolidays(sortedHolidays);
       });
-      // console.log(res.data);
+    // console.log(res.data);
     // };
 
     // fetchQueries();
@@ -128,9 +125,10 @@ const Admin = () => {
     if (userConfirmed) {
       try {
         if (!isAdminLoggedIn) return;
-        let token = window.localStorage.getItem('funworldLogin');
+        let token = window.localStorage.getItem("funworldLogin");
         const res = await axios.delete(
-          `https://free.funworldbackend.tech/api/holidays/${id}`, { headers: { token: token } }
+          `https://funworld-backend.vercel.app/api/holidays/${id}`,
+          { headers: { token: token } }
         );
 
         if (res.data.status) {
