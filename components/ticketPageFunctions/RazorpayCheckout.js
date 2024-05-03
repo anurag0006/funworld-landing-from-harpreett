@@ -20,7 +20,7 @@ export const RazorpayCheckout = async ({
     // console.log(checkoutPrice);
 
     const res = await axios.post(
-      "http://localhost:8000/api/razorpay/create-order",
+      "https://funworld-backend.vercel.app/api/razorpay/create-order",
       {
         amount: Number(checkoutPriceAfterDiscount * 100),
         name: info.name ? info.name : "",

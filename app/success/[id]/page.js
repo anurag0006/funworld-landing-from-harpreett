@@ -7,7 +7,9 @@ const Success = ({ params }) => {
   const [ticket, setTicket] = useState({});
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/soldtickets?id=${params.id}`)
+      .get(
+        `https://funworld-backend.vercel.app/api/soldtickets?id=${params.id}`
+      )
       .then((res) => {
         setTicket(res.data.message);
         // console.log(res.data.message);

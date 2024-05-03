@@ -17,7 +17,7 @@ const Scan = () => {
       let { email, password } = jwt.decode(token1);
       if (email && password) {
         axios
-          .post("http://localhost:8000/api/auth/admin", {
+          .post("https://funworld-backend.vercel.app/api/auth/admin", {
             email: email,
             password: password,
           })
@@ -41,10 +41,13 @@ const Scan = () => {
 
   const verifyCredentials = async (email, password) => {
     try {
-      const res = await axios.post("http://localhost:8000/api/auth/admin", {
-        email: email,
-        password: password,
-      });
+      const res = await axios.post(
+        "https://funworld-backend.vercel.app/api/auth/admin",
+        {
+          email: email,
+          password: password,
+        }
+      );
       if (res.data.admin) {
         setIsAdminLoggedIn(true);
         let token = jwt.sign({ email: email, password: password }, "FUNWORLD");
@@ -68,7 +71,7 @@ const Scan = () => {
       let soldTicketId = qrcode.split(" ")[0];
       let ticketId = qrcode.split(" ")[1];
       let res = await axios.get(
-        `http://localhost:8000/api/soldtickets?id=${soldTicketId}`
+        `https://funworld-backend.vercel.app/api/soldtickets?id=${soldTicketId}`
       );
 
       if (!res.data.status) {
@@ -89,7 +92,7 @@ const Scan = () => {
           if (check) {
             tickets[i].checkedIn = true;
             res = await axios.put(
-              `http://localhost:8000/api/soldtickets?id=${soldTicketId}`,
+              `https://funworld-backend.vercel.app/api/soldtickets?id=${soldTicketId}`,
               { tickets: tickets }
             );
           }

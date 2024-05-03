@@ -14,7 +14,7 @@ const Admin = () => {
       let { email, password } = jwt.decode(token1);
       if (email && password) {
         axios
-          .post("http://localhost:8000/api/auth/admin", {
+          .post("https://funworld-backend.vercel.app/api/auth/admin", {
             email: email,
             password: password,
           })
@@ -42,10 +42,13 @@ const Admin = () => {
 
   const verifyCredentials = async (email, password) => {
     try {
-      const res = await axios.post("http://localhost:8000/api/auth/admin", {
-        email: email,
-        password: password,
-      });
+      const res = await axios.post(
+        "https://funworld-backend.vercel.app/api/auth/admin",
+        {
+          email: email,
+          password: password,
+        }
+      );
       if (res.data.admin) {
         setIsAdminLoggedIn(true);
         let token = jwt.sign({ email: email, password: password }, "FUNWORLD");
@@ -62,7 +65,7 @@ const Admin = () => {
     if (!isAdminLoggedIn) return;
     let token = window.localStorage.getItem("funworldLogin");
     const res = await axios.post(
-      "http://localhost:8000/api/holidays",
+      "https://funworld-backend.vercel.app/api/holidays",
       {
         holiday: holiday,
       },
@@ -85,7 +88,7 @@ const Admin = () => {
     // const fetchQueries = async () => {
     if (!isAdminLoggedIn) return;
     let token = window.localStorage.getItem("funworldLogin");
-    axios.get("http://localhost:8000/api/query/").then((res) => {
+    axios.get("https://funworld-backend.vercel.app/api/query/").then((res) => {
       const revArray = res.data.message.slice().reverse();
       setSubmissions(revArray);
     });
@@ -94,13 +97,15 @@ const Admin = () => {
     // const fetchHolidays = async () => {
     // if (!isAdminLoggedIn) return;
     // let token = window.localStorage.getItem('funworldLogin')
-    axios.get("http://localhost:8000/api/holidays/").then((res) => {
-      const sortedHolidays = res.data.message.sort((a, b) => {
-        // Assuming holidayDate is in the format that allows direct string comparison
-        return a.holidayDate.localeCompare(b.holidayDate);
+    axios
+      .get("https://funworld-backend.vercel.app/api/holidays/")
+      .then((res) => {
+        const sortedHolidays = res.data.message.sort((a, b) => {
+          // Assuming holidayDate is in the format that allows direct string comparison
+          return a.holidayDate.localeCompare(b.holidayDate);
+        });
+        setAllHolidays(sortedHolidays);
       });
-      setAllHolidays(sortedHolidays);
-    });
     // console.log(res.data);
     // };
 
@@ -122,7 +127,7 @@ const Admin = () => {
         if (!isAdminLoggedIn) return;
         let token = window.localStorage.getItem("funworldLogin");
         const res = await axios.delete(
-          `http://localhost:8000/api/holidays/${id}`,
+          `https://funworld-backend.vercel.app/api/holidays/${id}`,
           { headers: { token: token } }
         );
 
