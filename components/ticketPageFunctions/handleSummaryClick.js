@@ -29,7 +29,7 @@ export const handleSummaryclick = async ({
 
   try {
     const res = await axios.post(
-      "https://api2.fwblr.apistack.net/api/soldtickets",
+      "https://funworld-backend.vercel.app/api/soldtickets",
       {
         userDetails: bookingDetails,
         bookingInfo: info,

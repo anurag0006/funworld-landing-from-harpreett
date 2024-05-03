@@ -18,7 +18,7 @@ const Admin = () => {
       let { email, password } = jwt.decode(token1);
       if (email && password) {
         axios
-          .post("https://api2.fwblr.apistack.net/api/auth/admin", {
+          .post("https://funworld-backend.vercel.app/api/auth/admin", {
             email: email,
             password: password,
           })
@@ -38,7 +38,7 @@ const Admin = () => {
         let token = window.localStorage.getItem("funworldLogin");
         try {
           const res = await axios.get(
-            "https://api2.fwblr.apistack.net/api/soldtickets"
+            "https://funworld-backend.vercel.app/api/soldtickets"
           );
           // console.log(res.data);
           // setSoldTicketsArray(res.data);
@@ -75,7 +75,7 @@ const Admin = () => {
     try {
       let token = window.localStorage.getItem("funworldLogin");
       const res = await axios.delete(
-        `https://api2.fwblr.apistack.net/api/soldtickets?id=${id}`,
+        `https://funworld-backend.vercel.app/api/soldtickets?id=${id}`,
         { headers: { token: token } }
       );
       console.log(res);
@@ -96,7 +96,7 @@ const Admin = () => {
   const verifyCredentials = async (email, password) => {
     try {
       const res = await axios.post(
-        "https://api2.fwblr.apistack.net/api/auth/admin",
+        "https://funworld-backend.vercel.app/api/auth/admin",
         {
           email: email,
           password: password,
@@ -132,7 +132,7 @@ const Admin = () => {
     try {
       let token = window.localStorage.getItem("funworldLogin");
       const res = await axios.put(
-        `https://api2.fwblr.apistack.net/api/soldtickets?id=${soldTicketId}`,
+        `https://funworld-backend.vercel.app/api/soldtickets?id=${soldTicketId}`,
         { tickets: updatedSoldTicketsArray[index].tickets },
         { headers: { token: token } }
       );

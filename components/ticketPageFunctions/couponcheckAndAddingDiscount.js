@@ -1,5 +1,5 @@
 export const checkCouponAndAddingDiscount = async ({
-    coupon,
+  coupon,
   checkoutPrice,
   setDiscountPrice,
   setCheckoutPriceAfterDiscount,
@@ -17,7 +17,7 @@ export const checkCouponAndAddingDiscount = async ({
   ) {
     try {
       // const res = await axios.post(
-      //   "https://api2.fwblr.apistack.net/api/coupon/verifycouponcode",
+      //   "https://funworld-backend.vercel.app/api/coupon/verifycouponcode",
       //   {
       //     couponCode: code, // Fix the variable name here from coupon to code
       //   }
@@ -47,5 +47,3 @@ export const checkCouponAndAddingDiscount = async ({
     return;
   }
 };
-
-

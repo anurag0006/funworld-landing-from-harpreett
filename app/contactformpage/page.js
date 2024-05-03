@@ -14,7 +14,7 @@ const Admin = () => {
       let { email, password } = jwt.decode(token1);
       if (email && password) {
         axios
-          .post("https://api2.fwblr.apistack.net/api/auth/admin", {
+          .post("https://funworld-backend.vercel.app/api/auth/admin", {
             email: email,
             password: password,
           })
@@ -43,7 +43,7 @@ const Admin = () => {
   const verifyCredentials = async (email, password) => {
     try {
       const res = await axios.post(
-        "https://api2.fwblr.apistack.net/api/auth/admin",
+        "https://funworld-backend.vercel.app/api/auth/admin",
         {
           email: email,
           password: password,
@@ -65,7 +65,7 @@ const Admin = () => {
     if (!isAdminLoggedIn) return;
     let token = window.localStorage.getItem("funworldLogin");
     const res = await axios.post(
-      "https://api2.fwblr.apistack.net/api/holidays",
+      "https://funworld-backend.vercel.app/api/holidays",
       {
         holiday: holiday,
       },
@@ -88,7 +88,7 @@ const Admin = () => {
     // const fetchQueries = async () => {
     if (!isAdminLoggedIn) return;
     let token = window.localStorage.getItem("funworldLogin");
-    axios.get("https://api2.fwblr.apistack.net/api/query/").then((res) => {
+    axios.get("https://funworld-backend.vercel.app/api/query/").then((res) => {
       const revArray = res.data.message.slice().reverse();
       setSubmissions(revArray);
     });
@@ -97,13 +97,15 @@ const Admin = () => {
     // const fetchHolidays = async () => {
     // if (!isAdminLoggedIn) return;
     // let token = window.localStorage.getItem('funworldLogin')
-    axios.get("https://api2.fwblr.apistack.net/api/holidays/").then((res) => {
-      const sortedHolidays = res.data.message.sort((a, b) => {
-        // Assuming holidayDate is in the format that allows direct string comparison
-        return a.holidayDate.localeCompare(b.holidayDate);
+    axios
+      .get("https://funworld-backend.vercel.app/api/holidays/")
+      .then((res) => {
+        const sortedHolidays = res.data.message.sort((a, b) => {
+          // Assuming holidayDate is in the format that allows direct string comparison
+          return a.holidayDate.localeCompare(b.holidayDate);
+        });
+        setAllHolidays(sortedHolidays);
       });
-      setAllHolidays(sortedHolidays);
-    });
     // console.log(res.data);
     // };
 
@@ -125,7 +127,7 @@ const Admin = () => {
         if (!isAdminLoggedIn) return;
         let token = window.localStorage.getItem("funworldLogin");
         const res = await axios.delete(
-          `https://api2.fwblr.apistack.net/api/holidays/${id}`,
+          `https://funworld-backend.vercel.app/api/holidays/${id}`,
           { headers: { token: token } }
         );
 
