@@ -1,8 +1,18 @@
 import React from "react";
 import Image from "next/image";
-
+import Head from "next/head";
+export const metadata = {
+  title: "Terms & Conditions",
+  description:
+    "Funworld Bangalore: Terms & Conditions: Know before you go! Review our terms and conditions to ensure a smooth visit.",
+};
 const Terms = () => {
   return (
+    <>
+    <Head>
+      <title>{metadata.title}</title>
+      <meta name="description" content={metadata.description} />
+    </Head>
     <div className="w-screen flex flex-col">
       <section className="w-full min-h-[629px] relative max-lg:min-h-[400px] max-xl:min-h-[450px] xl:h-fit max-md:min-h-[300px] max-sm:min-h-[250px]">
         <Image
@@ -530,6 +540,7 @@ const Terms = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

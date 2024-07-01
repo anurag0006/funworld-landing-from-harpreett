@@ -1,10 +1,13 @@
 import Image from 'next/image'
 import React from 'react'
 import Link from 'next/link'
+import Head from 'next/head';
+
 
 const Rules = () => {
     return (
         <div className=''>
+            
             <div className='px-[13vw] flex flex-col gap-8 text-[#5B5B5B]'>
                 <p>
                     For your safety and enjoyment at our Park, please carefully read all of the text below. Failure to follow any of the regulations, conditions and instructions set forth below may result in serious injury to yourself or other individuals. Individuals not following Park rules and safety instructions, will be subject to immediate ejection from the Park without refund.
@@ -65,9 +68,9 @@ const Rules = () => {
 
 
 
-                <h1 className='text-4xl font-extrabold text-black'>
+                <div className='text-4xl font-extrabold text-black'>
                     Food & Beverage
-                </h1>
+                </div>
 
                 <p>
                     The Park has a wide assortment of foods and beverages available, including bottled water. Contact the Park if you desire more specific information not available on these web pages.
@@ -86,9 +89,9 @@ const Rules = () => {
                     In any event, guests may bring personal foods into the park, to the extent that they are medically necessary (e.g., for diabetics, baby formula for infants, gluten-free foods, or allergy-safe foods for allergies).
                 </p>
 
-                <h1>
+                <div>
                     Operational Policies
-                </h1>
+                </div>
 
                 <div className='flex items-start gap-2 mt-3'>
                     <img className='mt-1' src={"https://funworldblr.s3.amazonaws.com/public/Reusable/tick.webp"} width={20} alt="tick" />
@@ -105,7 +108,7 @@ const Rules = () => {
                     <p>These Park Rules & Policies are not comprehensive, and are subject to change without notice. The Park may have numerous additional rules and procedures applicable to guests which, if not followed, may subject the guest to ejection without refund.</p>
                 </div>
 
-                <h1 className='text-4xl font-extrabold text-black'>Security as the Park</h1>
+                <div className='text-4xl font-extrabold text-black'>Security as the Park</div>
 
                 <p>
                     The Park strives to make your experience a happy one, in all respects. Unfortunately, there is no way that we can erase the wicked intent of some people. Therefore, please understand that the Park cannot, and does not, guarantee your personal security or that of your personal property (even if placed in a locker), and in no event will the Park be held liable for your lost, stolen or damaged possessions. If you need to store your possessions, ask the Park about lockers. If you have loose items while wanting to go on a ride, please have a friend or family member hold them or put such possessions in a locker.
@@ -119,9 +122,9 @@ const Rules = () => {
                     If you experience a security issue, please notify Park staff; we are here to assist you.
                 </p>
 
-                <h1 className='text-4xl font-extrabold text-black gap-3'>
+                <div className='text-4xl font-extrabold text-black gap-3'>
                     Other important links
-                </h1>
+                </div>
 
                 <Link href={'/guidelines/codeofconduct'}><div className='flex items-start gap-2'>
                     <img className='mt-1' src={"https://funworldblr.s3.amazonaws.com/public/Reusable/tick.webp"} width={20} alt="tick" />

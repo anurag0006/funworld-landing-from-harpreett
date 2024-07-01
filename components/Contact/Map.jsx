@@ -1,14 +1,14 @@
+'use client'
 import React, { useEffect, useRef } from 'react'
 import mapboxgl from 'mapbox-gl';
 import geoJson from "../../assets/location.json"
 
 const Map = () => {
-    const mapContainer = useRef(null);
+  const mapContainer = useRef(null);
   const map = useRef(null);
   const lng = 77.59130196640416;
   const lat = 13.007519054855095;
   const zoom = 15;
-  
   
   if(mapboxgl){
   mapboxgl.accessToken = 'pk.eyJ1IjoiaHMwNWp1biIsImEiOiJjbGJ5b2wwc2Ewczl2M3JvNWp5MjA4aW5lIn0.0dgJ13L9nKyjexDti0e4zQ';

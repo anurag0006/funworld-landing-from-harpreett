@@ -1,21 +1,26 @@
-'use client'
+import React from 'react'
 import ProceedBtn from '@/components/Repeating/Button'
 import Input from '@/components/Contact/Input'
 import InTouch from '@/components/Contact/InTouch'
 import Map from '@/components/Contact/Map'
-// import Footer from '@/components/Footer'
-import Head from 'next/head'
 import Image from 'next/image'
-import React, { useEffect, useRef } from 'react'
-
+import Head from "next/head";
+export const metadata = {
+  title: "Contact Us",
+  description:
+    "Contact Funworld Bangalore: Get in touch today! We're here to answer your questions and help plan your perfect visit.",
+};
 
 const Index = () => {
-  
-
   function handleSubmit(){
     // console.log("submit");
   }
   return (
+    <>
+      <Head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+      </Head>
       <div className='w-screen flex flex-col pb-5'>
         <Head>
           <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
@@ -94,6 +99,7 @@ const Index = () => {
          </section>
          {/* <Footer /> */}
     </div>
+    </>
   )
 }
 

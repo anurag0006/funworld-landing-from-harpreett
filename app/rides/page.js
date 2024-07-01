@@ -1,4 +1,3 @@
-'use client'
 import Left from "@/components/Amusement/Left";
 import Right from "@/components/Amusement/Right";
 import Right2 from "@/components/Amusement/Right2";

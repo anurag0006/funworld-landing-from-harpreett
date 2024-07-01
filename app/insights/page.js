@@ -1,8 +1,6 @@
 "use client";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import * as XLSX from "xlsx";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useRouter } from "next/navigation";

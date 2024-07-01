@@ -1,9 +1,27 @@
-import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-
-// Home/Carousel/Image1.webp
-
+'use client'
+import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 const Hero = () => {
+
+  useEffect(() => {
+    if (window && window !== undefined) {
+      const acceptedTerms = sessionStorage.getItem("acceptedTerms");
+      if (!acceptedTerms) {
+        Swal.fire({
+          title: "Please Note!",
+          html: "<p>Nylon swim clothes are <b>mandatory</b><br />to enter Water World.</p>",
+          icon: "info",
+          showCancelButton: false,
+          confirmButtonColor: "#3085d6",
+          confirmButtonText: "OK!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            sessionStorage.setItem("acceptedTerms", true);
+          }
+        });
+      }
+    }
+  }, []);
   const [slideIndex, setSlideIndex] = useState(0);
 
   const handleCLick = (arrow) => {

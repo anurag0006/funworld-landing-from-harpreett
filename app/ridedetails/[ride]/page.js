@@ -72,7 +72,7 @@ const Disclaimer = (props) => {
 
               <div className="ml-10 w-[50%] max-md:w-full max-md:ml-0 max-md:my-8 ">
                 <div className="sidebox-css w-full h-[480px] border rounded-xl text-white pl-8 flex flex-col justify-evenly">
-                  <h1 className="text-[28px]">Ride Info</h1>
+                  <div className="text-[28px]">Ride Info</div>
                   <div className="flex flex-col justify-between leading-8">
                     <div className="flex">
                       <BsSpeedometer2 className="mt-2 text-2xl" />
@@ -115,10 +115,10 @@ const Disclaimer = (props) => {
                 </div>
 
                 <div className="sidebox-css w-full h-[280px] rounded-xl text-center text-white mt-10 flex flex-col justify-evenly">
-                  <h1 className="text-[28px] flex ml-4">
+                  <div className="text-[28px] flex ml-4">
                     <BsFillExclamationTriangleFill className="mt-[5px]" />
-                    <p className="ml-3">Ride Not For</p>
-                  </h1>
+                    <h1 className="ml-3">Ride Not For</h1>
+                  </div>
                   <p className="text-[18px] text-left ml-4 leading-10">
                     Pregnant Women, heart patients, persons with high blood
                     pressure and those prone to epilepsy are advised to avoid

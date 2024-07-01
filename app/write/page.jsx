@@ -66,7 +66,7 @@ const WritePage = () => {
   }
 
   if (status === "unauthenticated") {
-    router.push("/");
+    router.push("/login");
   }
 
   const slugify = (str) =>
@@ -78,6 +78,7 @@ const WritePage = () => {
       .replace(/^-+|-+$/g, "");
 
   const handleSubmit = async () => {
+    console.log("requested started ->");
     const res = await fetch("/api/posts", {
       method: "POST",
       body: JSON.stringify({
@@ -159,7 +160,7 @@ const WritePage = () => {
               placeholder="Tell your story..."
             />
           </div>
-          <button className={styles.publish} onClick={handleSubmit}>
+          <button  className={styles.publish} onClick={handleSubmit}>
             Publish
           </button>
         </div>

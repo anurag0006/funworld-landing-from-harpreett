@@ -1,9 +1,18 @@
 import React from 'react'
 import Image from 'next/image'
-
-
+import Head from "next/head";
+export const metadata = {
+    title: "Policy",
+    description:
+      "Funworld Bangalore Park Policies: Know before you go! Get familiar with our guidelines to ensure a smooth, enjoyable visit for everyone.",
+  };
 const PrivacyPolicy = () => {
   return (
+    <>
+        <Head>
+          <title>{metadata.title}</title>
+          <meta name="description" content={metadata.description} />
+        </Head>
     <div className="w-screen flex flex-col" >
       <section className='w-full min-h-[629px] relative max-lg:min-h-[400px] max-xl:min-h-[450px] xl:h-fit max-md:min-h-[300px] max-sm:min-h-[250px]'>
         <Image className='bg-cover bg-center bg-no-repeat absolute top-0 -z-10 w-full max-sm:h-full object-contain  max-xs:object-cover' src={"https://funworldblr.s3.amazonaws.com/public/Reusable/bg1.webp"} alt="bacgkround img" width={2042} height={1029} />
@@ -126,6 +135,7 @@ const PrivacyPolicy = () => {
       </section>
 
     </div>
+    </>
   )
 }
 

@@ -2,10 +2,19 @@ import Image from 'next/image'
 import React from 'react'
 import { BsArrowRightCircleFill } from "react-icons/bs"
 import Link from 'next/link'
-
-
+import Head from "next/head";
+export const metadata = {
+    title: "Directions",
+    description:
+      "How to Find Us: Directions to Funworld Bangalore are easy! Plan your trip and find the quickest route to family fun and excitement.",
+  };
 const Directions = () => {
     return (
+        <>
+        <Head>
+          <title>{metadata.title}</title>
+          <meta name="description" content={metadata.description} />
+        </Head>
         <div className='min-h-screen relative'>
             <section className='w-full min-h-[629px] relative max-lg:min-h-[400px] max-xl:min-h-[450px] xl:h-fit max-md:min-h-[300px] max-sm:min-h-[250px]'>
                 <Image className='bg-cover bg-center bg-no-repeat absolute top-0 -z-10  max-sm:h-full object-contain  max-xs:object-cover  ' src={"https://funworldblr.s3.amazonaws.com/public/Amusement/hero_background.webp"} alt="bacgkround img" width={2042} height={1029} />
@@ -71,7 +80,7 @@ const Directions = () => {
                 </div>
             </div>
         </div>
-
+        </>
     )
 }
 

@@ -1,50 +1,19 @@
-"use client"
-import Rides from '@/components/Rides/Rides'
-import { animated, useInView } from '@react-spring/web'
+import Animation from '@/components/familyrides/Animation'
 import Image from 'next/image'
 import React from 'react'
-
+import Head from "next/head";
+export const metadata = {
+  title: "Family Rides",
+  description:
+    "Funworld Bangalore: Family Rides: Create lasting memories together. Enjoy our rides designed for families to have fun together.",
+};
 const Index = () => {
-  const [ref, props] = useInView(() => ({
-    from: { opacity: 0, y: 100 },
-    to: { opacity: 1, y: 0 },
-    config: { duration: 1000 },
-    reset: false,
-    delay: 1000
-  }))
-
-const ridesArray = [
-  { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides2.jpeg", text: "Fun Express" },
-  { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides3.jpeg", text: "Cycle  Monorail" },
-  { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides4.jpeg", text: "Techno Jump" },
-  { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides5.jpeg", text: "Shark Ride" },
-  { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides6.jpeg", text: "Mini Train" },
-  { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides7.jpeg", text: "Flying Appu" },
-  { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides8.jpeg", text: "Kiddy Swing Chair" },
-  { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides9.jpeg", text: "Carousel" },
-  { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides10.jpeg", text: "Matter Horn" },
-    { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides12.webp", text: "Power Surge" },
-    { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides13.webp", text: "Tsunami" },
-    { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides14.webp", text: "Roller Coaster" },
-    { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides15.webp", text: "Pendulum" },
-    { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides16.webp", text: "High Tower" },
-    { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides17.webp", text: "Sky Drop" },
-    { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides18.webp", text: "Wind Mill" },
-    { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides19.webp", text: "Kiddy Tagada" },
-    { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides20.webp", text: "Motor Bike" },
-    { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides21.webp", text: "Helecoptor" },
-    { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides22.webp", text: "Revolving Tower" },
-    { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides23.webp", text: "Mini Pirate Ship " },
-    { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides24.webp", text: "Children Jeep" },
-    { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides25.webp", text: "NFS Car" },
-    { img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides26.webp", text: "Flying Tiger" },
-  ];
-  
-
-
-
-
   return (
+    <>
+      <Head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+      </Head>
     <div className='w-screen flex flex-col  '>
       <section className='w-full min-h-[629px] relative max-lg:min-h-[400px] max-xl:min-h-[450px] xl:h-fit max-md:min-h-[300px] max-sm:min-h-[250px]'>
         <Image className='bg-cover bg-center bg-no-repeat absolute top-0 -z-10  max-sm:h-full object-contain  max-xs:object-cover ' src={"https://funworldblr.s3.amazonaws.com/public/Rides&Attractions/hero_background.webp"} alt="bacgkround img" width={2042} height={1029} />
@@ -91,18 +60,109 @@ const ridesArray = [
           <div className='text-[#5B5B5B] font-normal text-2xl py-10 max-xs:text-lg'>
             FunWorld Park is an amusement park founded in 1990 that has been expanding ever since. The park includes a full amusement ride park featuring 100+ rides suitable for all ages.
             </div>
-            <animated.div className='w-full min-h-screen grid grid-flow-row grid-cols-3 gap-4 max-md:grid-cols-2 max-xs:grid-cols-1 ' ref={ref} style={props} >
-            
-                {ridesArray.map((ride, index)=>{
-                  return (
-                    <Rides key={index} img={ride.img} num = {ride.num} text={ride.text} index={index} />  
-                  )
-                })}
-            </animated.div>
+            <Animation ridesArray={ridesArray}></Animation>
           </div>
       </section>
     </div>
+    </>
   )
 }
-
+const ridesArray = [
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides2.jpeg",
+    text: "Fun Express",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides3.jpeg",
+    text: "Cycle  Monorail",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides4.jpeg",
+    text: "Techno Jump",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides5.jpeg",
+    text: "Shark Ride",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides6.jpeg",
+    text: "Mini Train",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides7.jpeg",
+    text: "Flying Appu",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides8.jpeg",
+    text: "Kiddy Swing Chair",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides9.jpeg",
+    text: "Carousel",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides10.jpeg",
+    text: "Matter Horn",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides12.webp",
+    text: "Power Surge",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides13.webp",
+    text: "Tsunami",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides14.webp",
+    text: "Roller Coaster",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides15.webp",
+    text: "Pendulum",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides16.webp",
+    text: "High Tower",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides17.webp",
+    text: "Sky Drop",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides18.webp",
+    text: "Wind Mill",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides19.webp",
+    text: "Kiddy Tagada",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides20.webp",
+    text: "Motor Bike",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides21.webp",
+    text: "Helecoptor",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides22.webp",
+    text: "Revolving Tower",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides23.webp",
+    text: "Mini Pirate Ship ",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides24.webp",
+    text: "Children Jeep",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides25.webp",
+    text: "NFS Car",
+  },
+  {
+    img: "https://funworldblr.s3.amazonaws.com/public/Amusement/rides26.webp",
+    text: "Flying Tiger",
+  },
+];
 export default Index
